@@ -1,0 +1,23 @@
+{
+  "name": "anish-goyal-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build && node scripts/export-preview.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.2.8",
+    "@fontsource/inter": "5.2.8",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "5.1.2",
+    "vite": "7.3.0"
+  }
+}

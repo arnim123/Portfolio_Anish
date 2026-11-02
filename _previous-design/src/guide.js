@@ -1,0 +1,25 @@
+import { profile, projects } from './data';
+
+// A local, resume-based guide; no external model or invented personal facts.
+export function getGuideReply(question) {
+  const text = question.toLowerCase();
+  if (/\b(contact|email|phone|hire|hiring|opportunity|opportunities|together|location|based|hybrid|relocation)\b/.test(text)) {
+    return `Anish is based in ${profile.location}. Email ${profile.email} or call ${profile.phone}. His GitHub is github.com/Anishyou; the LinkedIn link and downloadable CV are in the portfolio.`;
+  }
+  if (/\b(agent|agents|agentic)\b/.test(text)) return 'Anish’s main focus is agentic AI and Python. His experience also includes AI service integrations, API communication, response validation, error handling, and testing at auxmoney.';
+  if (/\b(kotlin)\b/.test(text)) return 'Anish is interested in developing reliable financial products with Java and Kotlin. His resume lists Java experience; it does not claim existing Kotlin proficiency.';
+  if (/\b(cloud|aws|bedrock|kafka|terraform|kubernetes|docker)\b/.test(text)) return 'At auxmoney, Anish is gaining initial hands-on exposure to AWS / Amazon Bedrock, Kafka, Terraform, Kubernetes, and Docker. His resume describes this as initial exposure, rather than advanced cloud expertise.';
+  if (/\b(auxmoney)\b/.test(text)) return 'Anish has worked as a Working Student in AI & Automation at auxmoney since October 2025. His work includes OpenAI API and Langdock integrations, backend workflow logic, response validation, error handling, synthetic PDF test data, and functional and integration testing.';
+  if (/\b(ippen)\b/.test(text)) return 'At Ippen Digital, Anish was a Working Student in Product Management from December 2023 to April 2024. He contributed to Java backend development and managed configurations for approximately 80 websites, supporting product and team workflows.';
+  if (/\b(thesis|transcription)\b/.test(text)) return 'For his bachelor’s thesis at TUM, Anish developed video and audio transcription backend functionality with Java / Spring Boot and Python, including synchronised transcripts. He also built an Angular video player with transcript display and interactive features.';
+  if (/\b(programming|coding)\s+languages\b/.test(text)) return 'His resume includes Java, Python, SQL, TypeScript, and Swift, with Go used in the TUM software development practical course. Kotlin is an area of interest, rather than a stated skill.';
+  if (/\b(language|languages|german|english|hindi|turkish)\b/.test(text)) return 'Anish’s resume lists German, English, Hindi (native), and Turkish (beginner). It does not specify proficiency levels for German or English.';
+  if (/\b(volunteer|volunteering|degis|leadership)\b/.test(text)) return 'At DEGIS Munich City Chapter, Anish was Vice President of the Marketing Team from September 2021 to September 2022, then Vice President of Event Management from September 2022 to March 2023. He planned and coordinated events and designed and promoted social media campaigns.';
+  if (/\b(education|degree|university|tum|studied|graduate|studienkolleg)\b/.test(text)) return 'Anish is an Information Systems graduate of the Technical University of Munich (B.Sc. Wirtschaftsinformatik, October 2022–October 2026). He previously completed a Studienkolleg university preparatory programme at Unipark Dresden and ESKW Magdeburg from March 2019 to January 2020.';
+  if (/\b(experience|career|work|job|jobs|employment)\b/.test(text)) return 'Anish’s experience includes AI & Automation at auxmoney (October 2025–present), Product Management with Java backend contributions at Ippen Digital (December 2023–April 2024), and TUM’s Software Development Practical Course (October 2023–February 2024). The Experience section contains the full responsibilities.';
+  if (/\b(project|projects|portfolio|logpt|chatbot|vision|streaming)\b/.test(text)) return `His projects include ${projects.map(project => project.fullTitle || project.title).join('; ')}. Open a project in Selected Projects to see his contribution and the technologies listed in the resume.`;
+  if (/\b(stack|tech|technology|technologies|java|python|skill|skills|spring|pytorch)\b/.test(text)) return 'His main focus is agentic AI and Python. His wider toolkit includes Java, SQL, REST APIs, Angular, TypeScript, Flutter, Swift, and AI and testing tools. Spring Boot is from university projects and his thesis; Go is from the TUM practical course. PyTorch is basic, and cloud/infrastructure tools are initial hands-on exposure. The Toolkit section shows these distinctions.';
+  if (/\b(munich|troisdorf)\b/.test(text)) return getGuideReply('location');
+  if (/\b(hello|hi|hey)\b/.test(text)) return 'Hi! I can help you explore Anish’s experience, projects, education, skills, languages, or contact details. My answers are based on his resume.';
+  return 'That detail isn’t covered by this resume guide. I can help with Anish’s experience, projects, skills, education, languages, volunteering, or contact information. For anything else, reach out at goyalanish886@gmail.com.';
+}
